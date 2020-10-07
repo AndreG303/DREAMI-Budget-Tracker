@@ -1,6 +1,6 @@
 var CACHE_NAME = "my-site-cache-v1";
 const DATA_CACHE_NAME = "data-cache-v1";
-
+// files that are going to be cache and used offline 
 var urlsToCache = [
   "/",
   "/db.js",
@@ -10,7 +10,7 @@ var urlsToCache = [
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png"
 ];
-
+// install the cache name from above and add urls to cache 
 self.addEventListener("install", function(event) {
   // Perform install steps
   event.waitUntil(
@@ -20,7 +20,7 @@ self.addEventListener("install", function(event) {
     })
   );
 });
-
+// listen for the api routes and open the date chache for the return info and response of api calla
 self.addEventListener("fetch", function(event) {
   // cache all get requests to /api routes
   if (event.request.url.includes("/api/")) {
@@ -35,6 +35,7 @@ self.addEventListener("fetch", function(event) {
 
             return response;
           })
+          // error handleling 
           .catch(err => {
             // Network request failed, try to get it from the cache.
             return cache.match(event.request);
@@ -44,7 +45,7 @@ self.addEventListener("fetch", function(event) {
 
     return;
   }
-
+// responds after the event happens, fetch the request 
   event.respondWith(
     fetch(event.request).catch(function() {
       return caches.match(event.request).then(function(response) {
