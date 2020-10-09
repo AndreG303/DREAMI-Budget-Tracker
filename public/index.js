@@ -1,4 +1,4 @@
-// adding service worker, if service workier is activated when my window loads register service worker 
+// adding service worker, if service worker is activated when my window loads then register service worker 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
@@ -81,7 +81,7 @@ function populateChart() {
         datasets: [{
             label: "Total Over Time",
             fill: true,
-            backgroundColor: "#6666ff",
+            backgroundColor: "#3333ff",
             data
         }]
     }
@@ -145,7 +145,7 @@ function sendTransaction(isAdding) {
     }
   })
   .catch(err => {
-    // fetch failed, so save in indexed db
+    // fetch failed, so save in indexDB
     saveRecord(transaction);
 
     // clear form

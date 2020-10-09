@@ -20,7 +20,7 @@ self.addEventListener("install", function(event) {
     })
   );
 });
-// listen for the api routes and open the date chache for the return info and response of api calla
+// listen for the api routes and open the date chache for the return info and response of api call
 self.addEventListener("fetch", function(event) {
   // cache all get requests to /api routes
   if (event.request.url.includes("/api/")) {

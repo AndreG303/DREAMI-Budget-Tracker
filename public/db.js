@@ -1,4 +1,4 @@
-// depending of the type of index db 
+// It selects depending of the type of indexDB
 const indexedDB =
   window.indexedDB ||
   window.mozIndexedDB ||
@@ -6,7 +6,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-// opening the index db and calling the budget, 1 is the version of the database
+// opening the indexDB and calling the budget, 1 is the version of the database
 let db;
 const request = indexedDB.open("budget", 1);
 
@@ -36,7 +36,7 @@ function saveRecord(record) {
 
   store.add(record);
 }
-// chechk if database is up and running and get all the save stuff gets sends through 
+// check if database is up and running and get all the saved transactions, on succes they get send through 
 function checkDatabase() {
   const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
